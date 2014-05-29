@@ -2,6 +2,7 @@
 
 CREATE TABLE bands (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  cheesetype TEXT,
-  cheesedate DATE NOT NULL
+  bandname TEXT,
+  bandlink TEXT,
+  bandreal INT
 ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
