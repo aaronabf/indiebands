@@ -1,4 +1,4 @@
-Fake or Real: Bands
+Indie Bands: Real or Fake?
 ========
 
 A small web app determining if a band is real or fake.

@@ -22,14 +22,18 @@ catch (PDOException $e)
 // Randomly select a band from the database
 try
 {
-  // THIS IS SUUUUUPER SLOW AND INNEFICIENT, BUT WE'LL FIX IT LATER
+  // Selects random row from database
+  $sth = $pdo->query('SHOW TABLE STATUS');
+  $size = $sth->fetch(PDO::FETCH_ASSOC)["Rows"];
+  $offset = rand(1,$size);
   $sql = 'SELECT * FROM bands
-          ORDER BY RAND() LIMIT 0,1';
+          WHERE id=' . $offset;
+
   $result = $pdo->query($sql)->fetch();
   echo json_encode($result);
 }
 catch (PDOException $e)
 {
-  echo 'Error searching cheese: ' . $e->getMessage();
+  echo 'Error querying database: ' . $e->getMessage();
   exit();
 }

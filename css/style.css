@@ -19,25 +19,28 @@ html, body {
   padding: 20px;
 }
 
-#realButton, #fakeButton {
-  width: 20%;
-  height: 100px;
+button {
   border: 1px solid #eee;
   background: #BDC3C7;
-  font-size: 200%;
   color: #FFF;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0,0,0,0.25);
 }
 
+#realButton, #fakeButton {
+  width: 20%;
+  height: 100px;
+  font-size: 200%;
+}
+
 #resetButton {
+  position: relative;
+  right: 50%;
+  margin-right: -15%;
+  float: right;
+  clear: none;
   width: 15%;
   height: 75px;
-  border: 1px solid #eee;
-  background: #BDC3C7;
-  color: #FFF;
-  text-align: center;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.25);
 }
 
 #buttonSub1 {
@@ -48,18 +51,30 @@ html, body {
   font-size: 150%;
 }
 
+iframe {
+  position: relative;
+  left: 50%;
+  margin-left: -300px;
+  float: left;
+  clear: none;
+}
+
 @media screen and (max-width: 480px) {
   #bandName {
     font-size: 400%;
   }
 
   #realButton, #fakeButton {
-    margin: 10px 0 10px 0;
-    float: left;
     width: 100%;
+    float: left;
+    margin: 10px 0 10px 0;
   }
 
-  #resetButton {
+  #resetButton, iframe {
+    position: static;
+    left: auto;
+    right: auto;
+    margin: 0;
     float: left;
     width: 100%;
   }
