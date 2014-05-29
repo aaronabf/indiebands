@@ -6,9 +6,6 @@ define('DBNAME', 'testing');
 define('USERNAME', 'aaron');
 define('PASSWORD', 'aaronsql');
 
-// Read the input and parse the json
-$request = json_decode(file_get_contents('php://input'));
-
 // Establish connection with database
 try
 {
@@ -22,17 +19,14 @@ catch (PDOException $e)
   exit();
 }
 
-// Run search query through the database
+// Randomly select a band from the database
 try
 {
-  $sql = 'SELECT * FROM cheeses
-          WHERE cheesetype LIKE "%' . $request->queryData .'%" ';
-  $result = $pdo->query($sql);
-
-  while ($row = $result->fetch()) {
-    $cheeses[] = $row;
-  }
-  echo json_encode($cheeses);
+  // THIS IS SUUUUUPER SLOW AND INNEFICIENT, BUT WE'LL FIX IT LATER
+  $sql = 'SELECT * FROM bands
+          ORDER BY RAND() LIMIT 0,1';
+  $result = $pdo->query($sql)->fetch();
+  echo json_encode($result);
 }
 catch (PDOException $e)
 {

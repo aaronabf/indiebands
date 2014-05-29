@@ -1,7 +1,7 @@
 html, body {
-  width: 100%;
   margin: 0;
   padding: 0;
+  width: 100%;
   text-align: center;
   font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
@@ -28,8 +28,8 @@ span {
 
 @media screen and (max-width: 480px) {
   #realButton, #fakeButton {
-    float: left;
     margin: 10px 0 10px 0;
+    float: left;
     width: 100%;
   }
 }

@@ -3,15 +3,32 @@ $(document).ready(function(){
   var bandLink;
   var bandReal;
 
+  function init() {
+    $.post('search.php', function (response) {
+      bandName = response.bandname;
+      bandLink = response.bandlink;
+      bandReal = response.bandreal;
+      $('#bandName').html(bandName);
+    }, 'json');
+  }
+
+  init();
+
   $('#realButton').click(function() {
-    // $.post( 'search.php', { name: 'John', time: '2pm' }, function (response) {
-    //   console.log('go');
-    // });
+    if (bandReal)
+      console.log('YOU ARE A WINNER!');
+    else
+      console.log('LOSER!');
+
+    init();
   });
 
   $('#fakeButton').click(function() {
-    // $.post( 'search.php', { name: 'John', time: '2pm' }, function (response) {
-    //   console.log('go');
-    // });
+    if (bandReal)
+      console.log('LOSER!');
+    else
+      console.log('YOU ARE A WINNER!');
+
+    init();
   });
 });
