@@ -12,7 +12,7 @@ bandreal = 1;
 
 INSERT INTO bands SET
 bandname='Burning Hotels',
-bandlink='4PBQkrNYAgAoKWdHNwmycKs',
+bandlink='4PBQkrNYAgAoKWdHNwmycK',
 bandreal = 1;
 
 INSERT INTO bands SET
