@@ -15,7 +15,9 @@ try
 }
 catch (PDOException $e)
 {
-  echo 'Error: unable to connect to the database server: ' . $e->getMessage();
+  $error = new stdClass();
+  $error->bandname = 'Error: unable to connect to the database server: ' . $e->getMessage();
+  echo json_encode($error);
   exit();
 }
 
@@ -34,6 +36,8 @@ try
 }
 catch (PDOException $e)
 {
-  echo 'Error querying database: ' . $e->getMessage();
+  $error = new stdClass();
+  $error->bandname = 'Error querying database: ' . $e->getMessage();
+  echo json_encode($error);
   exit();
 }

@@ -21,11 +21,15 @@ $(document).ready(function(){
   // Send post request and update values
   function init() {
     $.post('search.php', function (response) {
+      console.log(response);
       bandName = response.bandname;
       bandLink = response.bandlink;
       bandReal = parseInt(response.bandreal);
       $('#bandName').html(bandName);
-    }, 'json');
+    }, 'json')
+    .fail(function() {
+      console.error('php error');
+    });
   }
 
   // Reset the game by removing the message and play button and runs init()
