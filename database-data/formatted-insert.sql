@@ -245,8 +245,3 @@ INSERT INTO bands SET
 bandname = 'The Mild-Mannered Orthodontists',
 bandlink = '',
 bandreal = 0;
-
-INSERT INTO bands SET
-bandname = '',
-bandlink = '',
-bandreal = 0;

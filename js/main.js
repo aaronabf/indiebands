@@ -20,7 +20,7 @@ $(document).ready(function(){
 
   // Send post request and update values
   function init() {
-    $.post('search.php', function (response) {
+    $.post('main.php', function (response) {
       console.log(response);
       bandName = response.bandname;
       bandLink = response.bandlink;
@@ -59,8 +59,7 @@ $(document).ready(function(){
     if (bandReal) {
       $('#displayMessage').html(fakePressAndReal);
       $('#playButton').html(spotStart + bandLink + spotEnd);
-    }
-    else {
+    } else {
       $('#displayMessage').html(fakePressAndFake);
     }
 
