@@ -13,15 +13,9 @@ $(document).ready(function(){
   var bandLink;
   var bandReal;
 
-  // Remove button focus
-  $('button').focus(function() {
-    this.blur();
-  });
-
   // Send post request and update values
   function init() {
     $.post('main.php', function (response) {
-      console.log(response);
       bandName = response.bandname;
       bandLink = response.bandlink;
       bandReal = parseInt(response.bandreal);
@@ -40,11 +34,7 @@ $(document).ready(function(){
     init();
   }
 
-  // Hide reset button and run init on page load
-  $('#resetButton').hide();
-  init();
-
-  $('#realButton').click(function() {
+  function real() {
     if (bandReal) {
       $('#displayMessage').html(realPressAndReal);
       $('#playButton').html(spotStart + bandLink + spotEnd);
@@ -53,9 +43,9 @@ $(document).ready(function(){
     }
 
     $('#resetButton').show();
-  });
+  }
 
-  $('#fakeButton').click(function() {
+  function fake() {
     if (bandReal) {
       $('#displayMessage').html(fakePressAndReal);
       $('#playButton').html(spotStart + bandLink + spotEnd);
@@ -64,17 +54,40 @@ $(document).ready(function(){
     }
 
     $('#resetButton').show();
-  });
+  }
 
-  // Reset game on space bar
+  // Remove button focus, hide reset button, and run init on page load
+  $('button').focus(function() {
+    this.blur();
+  });
+  $('#resetButton').hide();
+  init();
+
+  // Run reset, fake, and real functions on key presses
   $('#resetButton').click(function() {
     reset();
   });
+  $('#realButton').click(function() {
+    real();
+  });
+  $('#fakeButton').click(function() {
+    fake();
+  });
 
-  // Reset game on space bar
-  $(window).keypress(function(e) {
-    if (e.keyCode === 32) {
-      reset();
+  // Run reset, fake, and real functions on key presses
+  $(window).keydown(function(e) {
+    switch (e.which) {
+      case 32: // Space bar
+        reset();
+        break;
+      case 39: // Right
+      case 82: // R key
+        real();
+        break;
+      case 37: // Left
+      case 70: // F key
+        fake();
+        break;
     }
   });
 });
